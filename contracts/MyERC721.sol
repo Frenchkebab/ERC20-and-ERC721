@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract MyToken is ERC721, Ownable {
+contract MyERC721 is ERC721, Ownable {
     using Counters for Counters.Counter;
     IERC20 public tokenAddress;
     uint public RATE = 100 * 10 ** 18;
@@ -22,5 +22,9 @@ contract MyToken is ERC721, Ownable {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
+    }
+
+    function withdrawToken() public onlyOwner {
+        tokenAddress.transfer(msg.sender, tokenAddress.balanceOf(address(this)));
     }
 }
