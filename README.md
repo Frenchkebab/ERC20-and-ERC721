@@ -1,8 +1,4 @@
-## week3 - Assignment4 in Metana
-
-Made the base code from openzeppelin wizard
-
-### How to test
+## How to test
 
 1. Deploy `MyERC20` contract (the deployer will get 100 tokens initially) and check the **balance** of the deployer
 
